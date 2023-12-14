@@ -5,18 +5,19 @@ import Login from './Login';
 import WebPlayer from './WebPlayback';
 
 function App() {
-  const [token, setToken] = useState('');
-  useEffect(() => {
-    async function getToken() {
-      const res = await fetch('/auth/token');
-      const json = await res.json();
-      setToken(json.access_token);
-    }
-    getToken();
-  }, []);
+  // const [token, setToken] = useState('');
+  // useEffect(() => {
+  //   async function getToken() {
+  //     const res = await fetch('/auth/token');
+  //     const json = await res.json();
+  //     setToken(json.access_token);
+  //   }
+  //   getToken();
+  // }, []);
   return (
     <>
-      { (token === '') ? <Login /> : <WebPlayer token={token} />}
+      <WebPlayer />
+      {/* { (token === '') ? <Login /> : <WebPlayer token={token} />} */}
     </>
   );
 }
