@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/xmas-demo/static/css/main.7a9ae4f4.css",
+    "main.js": "/xmas-demo/static/js/main.1d2bdf26.js",
+    "static/js/787.0e1d5e16.chunk.js": "/xmas-demo/static/js/787.0e1d5e16.chunk.js",
+    "static/media/Background.png": "/xmas-demo/static/media/Background.13fed65997c633ac1bf4.png",
+    "static/media/Dnd Character - Jenny.png": "/xmas-demo/static/media/Dnd Character - Jenny.3ce387e4f755f6b537a5.png",
+    "static/media/Twiggy - Brit.png": "/xmas-demo/static/media/Twiggy - Brit.f6c5f9b6551ffe6283f4.png",
+    "static/media/Jolly Cowboy - Jim.png": "/xmas-demo/static/media/Jolly Cowboy - Jim.5520a19d7601e6561bca.png",
+    "static/media/joe_ornament.png": "/xmas-demo/static/media/joe_ornament.f0d4bc55c3a4d4c52471.png",
+    "static/media/Grumpy Cat - Ildar.png": "/xmas-demo/static/media/Grumpy Cat - Ildar.07499c54f0fc951f9bcd.png",
+    "static/media/Nutcracker - Kelly.png": "/xmas-demo/static/media/Nutcracker - Kelly.3f2f7a1d244673fd1c01.png",
+    "static/media/Seashell - Morgan.png": "/xmas-demo/static/media/Seashell - Morgan.2695e93a56bcd521cc2d.png",
+    "static/media/Snowman - Tess.png": "/xmas-demo/static/media/Snowman - Tess.5020227ad8c4ddec3715.png",
+    "static/media/Jedi Order - Scott.png": "/xmas-demo/static/media/Jedi Order - Scott.5eb565313001df54bd7a.png",
+    "static/media/Orange 3.png": "/xmas-demo/static/media/Orange 3.1d74ad41b4bf4d7eb2da.png",
+    "static/media/Orange 4.png": "/xmas-demo/static/media/Orange 4.5ce3c9a116c2835cea9a.png",
+    "static/media/Teal 1.png": "/xmas-demo/static/media/Teal 1.418d47a107f3bc852e7e.png",
+    "static/media/Orange 1.png": "/xmas-demo/static/media/Orange 1.1274e30e7c9f4b610e40.png",
+    "static/media/Orange 2.png": "/xmas-demo/static/media/Orange 2.835a79a6923f47b926a3.png",
+    "static/media/Teal 2.png": "/xmas-demo/static/media/Teal 2.6ccb6232052f9fcd8fe0.png",
+    "static/media/Teal 3.png": "/xmas-demo/static/media/Teal 3.898684a37cbe053c2c60.png",
+    "static/media/tree_test.webp": "/xmas-demo/static/media/tree_test.91b46f5195e062329fa5.webp",
+    "static/media/Teal 4.png": "/xmas-demo/static/media/Teal 4.bcef7596f00b2f2da4ae.png",
+    "static/media/christmas-tree.svg": "/xmas-demo/static/media/christmas-tree.4ca9236134d14a9ca6ce2b65735d93c3.svg",
+    "index.html": "/xmas-demo/index.html",
+    "main.7a9ae4f4.css.map": "/xmas-demo/static/css/main.7a9ae4f4.css.map",
+    "main.1d2bdf26.js.map": "/xmas-demo/static/js/main.1d2bdf26.js.map",
+    "787.0e1d5e16.chunk.js.map": "/xmas-demo/static/js/787.0e1d5e16.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a9ae4f4.css",
+    "static/js/main.1d2bdf26.js"
+  ]
+}
