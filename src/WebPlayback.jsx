@@ -3,6 +3,7 @@ import axios from "axios";
 import treeTest from './tree_test.webp';
 import Icon from "./tree";
 import tree from './christmas-tree.svg';
+import hoverText from './text/xmas_title.png';
 import background from './Background.png';
 import ornamentJoe from './ornaments/joe_ornament.png';
 import ornamentScott from './ornaments/Jedi Order - Scott.png';
@@ -23,6 +24,17 @@ import blueBulb1 from './ornaments/Teal 1.png';
 import blueBulb2 from './ornaments/Teal 2.png';
 import blueBulb3 from './ornaments/Teal 3.png';
 import blueBulb4 from './ornaments/Teal 4.png';
+
+import joeImg from './team/joe.png';
+import britneyImg from './team/britney.png';
+import morganImg from './team/morgan.png';
+import jimImg from './team/jim.png';
+import scottImg from './team/scott.png';
+import tessImg from './team/tess.png';
+import kellyImg from './team/kelly.png';
+import jennyImg from './team/jenny.png';
+import ildarImg from './team/ildar.png';
+
 import { Stage, Layer, Image, Rect, Group, Text, Circle, Path } from 'react-konva';
 import { Html } from 'react-konva-utils';
 import useImage from "use-image";
@@ -34,67 +46,78 @@ const ORNAMENTS = [
     posX: 1220,
     posY: 880,
     image: ornamentJoe,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "4aPr8paZw1xUmsnWgkvM61",
+    personImg: joeImg
   },
   {
     posX: 1445,
     posY: 870,
     image: ornamentScott,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "28ysLWZ02mA8ipcWM3epnC",
+    personImg: scottImg
   },
   {
     posX: 1730,
     posY: 850,
     image: ornamentIldar,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "2PBu6rnmIdXXQlx1V8W5Dh",
+    personImg: ildarImg
   },
   {
     posX: 1640,
     posY: 630,
     image: ornamentKelly,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "0omo8jbNqxTr9SUsQ4EBhK",
+    personImg: kellyImg
   },
   {
     posX: 1430,
     posY: 700,
     image: ornamentBellCat,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "72U1a2yiPvUm94xWxcmfIl",
+    personImg: ornamentBellCat
   },
   {
     posX: 1250,
     posY: 655,
     image: ornamentMorgan,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "2zHI6YFqqGrbJJnjny50Ld",
+    personImg: morganImg
   },
   {
     posX: 1410,
     posY: 475,
     image: ornamentBritney,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "0U4aBRL4HlPXqm3L8cxzWj",
+    personImg: britneyImg
   },
   {
     posX: 1615,
     posY: 406,
     image: ornamentJim,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "10QiDTp5Sp4vatFzrZ8ldq",
+    personImg: jimImg
   },
   {
     posX: 1220,
     posY: 400,
     image: ornamentTess,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "4A5Y4VFfy92mqWNBHZbYZL",
+    personImg: tessImg
   },
   {
     posX: 1380,
     posY: 210,
     image: ornamentJenny,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "0aUFbInasmjOsgJBzGowD4",
+    personImg: jennyImg
   },
   {
     posX: 1510,
     posY: 230,
     image: ornamentTenacra,
-    playlist: "https://open.spotify.com/embed/playlist/30OoBXRO3KkKOBODhcsu9k"
+    playlist: "72U1a2yiPvUm94xWxcmfIl",
+    personImg: ornamentTenacra
   }
 ];
 
@@ -214,7 +237,7 @@ const OrnamentComp = React.forwardRef((props, ref) => {
         image={ornamentImage}
         {...props.imageProps}
         offsetX={ornamentOffX}
-        onClick={() => setSpotifyOpen(!spotifyOpen)}
+        onClick={() => props.onClick(props.playlist, props.personImg)}
         onMouseEnter={(e) => {
           jingleAnim(e.target);
         }}
@@ -223,14 +246,12 @@ const OrnamentComp = React.forwardRef((props, ref) => {
           setSpotifyOpen(true);
         }}
       />
-      <SpotifyPopup open={spotifyOpen} groupX={groupPos.x} groupY={groupPos.y} playlist={props.playlist} />
     </Group>
   );
 });
 
 const Bulb = (props) => {
   const { scale } = props;
-  console.log(scale);
   const [bulbImg, status] = useImage(props.image);
   const bulbRef = React.createRef(null);
   const glowAnim = (shape) => {
@@ -274,7 +295,7 @@ const Bulbs = (props) => {
     const idx = setInterval(() => {
       const selectIdx = Math.floor(Math.random() * props.bulbs.length);
       setGlowIdx(selectIdx);
-    }, 1000);
+    }, 5000);
     return () => clearInterval(idx);
   }, []);
 
@@ -308,7 +329,9 @@ const SpotifyPopup = (props) => {
 export default function WebPlayer(props){
   const stageWidth = 1920;
   const stageHeight = 1080;
-  const [windowSize, setWindowSize] = useState({ width: 960, height: 540, scale: 0 });
+  const [windowSize, setWindowSize] = useState({ width: 640, height: 360, scale: 0 });
+  const [playState, setPlayerState] = useState({ id: '72U1a2yiPvUm94xWxcmfIl', img: null });
+  const [hoverTextImg] = useImage(hoverText)
   let scale = Math.min(windowSize.width / stageWidth, windowSize.height / stageHeight);
 
   const containerRef = useRef(null);
@@ -330,25 +353,48 @@ export default function WebPlayer(props){
     return () => window.removeEventListener('resize', checkSize);
   }, []);
 
-  return (<div className="wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', background: '#00a7b5' }}>
-      <div ref={containerRef} className="cardWrapper">
+  const openPlaylist = (playlist, img) => {
+    setPlayerState({ id: playlist, img: img });
+  };
+
+  return (<div className="wrapper" style={{ display: 'flex', flexDirection:'column', justifyContent: 'center', justifyContent: 'space-evenly', alignItems: 'center', height: '100%', width: '100%', background: '#00a7b5' }}>
+      <div ref={containerRef} className="cardWrapper" style={{ display: 'flex', flexDirection: 'column' }}>
         <Stage  width={windowSize.width} height={windowSize.height} scale={{ x: scale, y: scale }}>
-        <Layer ref={backgroundRef}>
-          <TreeImage
-            ref={imgRef}
-            canvasWidth={stageWidth}
-            canvasHeight={stageHeight}
-            //scale={scale}
-          />
-          {ORNAMENTS.map((props) => {
-            return <OrnamentComp {...props} />;
-          })}
-          <Bulbs bulbs={BULBS} scale={windowSize.scale} />
-        </Layer>
-        <Layer listening={false}>
-          <SnowStorm followMouse={false} excludeMobile={false} vMaxY={2} vMaxX={2} />
-        </Layer>
+          <Layer ref={backgroundRef}>
+            <TreeImage
+              ref={imgRef}
+              canvasWidth={stageWidth}
+              canvasHeight={stageHeight}
+              //scale={scale}
+            />
+            {ORNAMENTS.map((props) => {
+              return <OrnamentComp {...props} onClick={openPlaylist} />;
+            })}
+            <Bulbs bulbs={BULBS} scale={windowSize.scale} />
+          </Layer>
+          <Layer listening={false}>
+            <Image
+              image={hoverTextImg}
+              scale={windowSize.scale}
+              x={25}
+              y={900}
+              rotation={-30}
+            />
+          </Layer>
+          <Layer listening={false}>
+            <SnowStorm followMouse={false} excludeMobile={false} vMaxY={2} vMaxX={2} />
+          </Layer>
       </Stage>
+    </div>
+    <div className="player" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        {playState.img && <img src={playState.img} style={{ maxWidth: 200, maxHeight: 200 }}/>}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <iframe style={{ borderRadius: '12px' }} src={`https://open.spotify.com/embed/playlist/${playState.id}`} width="100%" height="125" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          {playState.img && <a
+            className="full-playlist"
+            href="https://open.spotify.com/playlist/72U1a2yiPvUm94xWxcmfIl?si=35348d798dca4d68"
+          >Checkout the full holiday mix here!</a>}
+        </div>
     </div>
   </div>
   );
